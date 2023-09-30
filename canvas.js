@@ -61,15 +61,20 @@ function Ball(x, y, dy, radius, color) {
     c.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
     c.fillStyle = this.color;
     c.fill();
+    c.stroke();
     c.closePath();
   };
 }
 
 // Implementation
 var ball;
-
+var ballArray = [];
 function init() {
-  ball = new Ball(canvas.width / 2, canvas.height / 2, 4, 30, "red");
+  for (var i = 0; i < 500; i++) {
+    var x = randomIntFromRange(0, canvas.width);
+    var y = randomIntFromRange(0, canvas.height);
+    ballArray.push(new Ball(x, y, 2, 30, "red"));
+  }
 }
 
 // Animation Loop
@@ -78,7 +83,9 @@ function animate() {
 
   c.clearRect(0, 0, canvas.width, canvas.height);
 
-  ball.update();
+  for (var i = 0; i < ballArray.length; i++) {
+    ballArray[i].update();
+  }
 }
 init();
 animate();
