@@ -13,6 +13,8 @@ var mouse = {
 
 var colors = ["#F20F79", "#04BFBF", "#F2B90C", "#8C4E03", "#F25C05"];
 
+var gravity = 1;
+
 // Event Listeners
 addEventListener("mousemove", function (event) {
   mouse.x = event.clientX;
@@ -47,6 +49,8 @@ function Ball(x, y, dy, radius, color) {
   this.update = function () {
     if (this.y + this.radius > canvas.height) {
       this.dy = -this.dy;
+    } else {
+      this.dy += gravity;
     }
     this.y += this.dy;
     this.draw();
