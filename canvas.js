@@ -48,7 +48,7 @@ function Ball(x, y, dy, radius, color) {
   this.color = color;
 
   this.update = function () {
-    if (this.y + this.radius > canvas.height) {
+    if (this.y + this.radius + this.dy > canvas.height) {
       this.dy = -(this.dy * friction);
     } else {
       this.dy += gravity;
@@ -69,11 +69,13 @@ function Ball(x, y, dy, radius, color) {
 // Implementation
 var ball;
 var ballArray = [];
+
 function init() {
-  for (var i = 0; i < 500; i++) {
+  var radius = 30;
+  for (var i = 0; i < 100; i++) {
     var x = randomIntFromRange(0, canvas.width);
-    var y = randomIntFromRange(0, canvas.height);
-    ballArray.push(new Ball(x, y, 2, 30, "red"));
+    var y = randomIntFromRange(0, canvas.height - radius);
+    ballArray.push(new Ball(x, y, 2, radius, "red"));
   }
 }
 
