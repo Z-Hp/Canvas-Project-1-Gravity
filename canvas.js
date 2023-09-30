@@ -14,7 +14,7 @@ var mouse = {
 var colors = ["#F20F79", "#04BFBF", "#F2B90C", "#8C4E03", "#F25C05"];
 
 var gravity = 1;
-var friction = 0.99;
+var friction = 0.59;
 
 // Event Listeners
 addEventListener("mousemove", function (event) {
@@ -22,11 +22,14 @@ addEventListener("mousemove", function (event) {
   mouse.y = event.clientY;
 });
 
-// Making the canvas responsive to the browser
 addEventListener("resize", function () {
   canvas.width = innerWidth;
   canvas.height = innerHeight;
 
+  init();
+});
+
+addEventListener("click", function () {
   init();
 });
 
@@ -68,9 +71,10 @@ function Ball(x, y, dy, radius, color) {
 
 // Implementation
 var ball;
-var ballArray = [];
+var ballArray;
 
 function init() {
+  ballArray = [];
   var radius = 30;
   for (var i = 0; i < 100; i++) {
     var x = randomIntFromRange(0, canvas.width);
