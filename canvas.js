@@ -56,16 +56,19 @@ function Ball(x, y, radius, color) {
 }
 
 // Implementation
-function init() {}
+var ball;
+function init() {
+  ball = new Ball(canvas.width / 2, canvas.height / 2, 30, "red");
+}
 
 // Animation Loop
 function animate() {
   requestAnimationFrame(animate);
 
   c.clearRect(0, 0, canvas.width, canvas.height);
-  c.fillText("HTML CANVAS BOILERPLATE", mouse.x, mouse.y);
-}
 
+  ball.update();
+}
 init();
 animate();
 // --------------------------------------------------------------------------------------------------------------------------
